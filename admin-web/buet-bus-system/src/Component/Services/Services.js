@@ -1,108 +1,41 @@
 import React from 'react'
 
-const Services = () => {
+const Services = (props) => {
+  const serviceElement = [
+    {name: 'Buses', icon:'./Images/bus2.png'},
+    {name: 'Add New Bus', icon:'./Images/bus2.png'},
+    {name: 'Edit Bus', icon:'./Images/bus2.png'},
+    {name: 'Map', icon:'./Images/map.png'},
+    {name: 'Routes', icon:'./Images/Route.png'},
+    {name: 'Add Route', icon:'./Images/Route.png'},
+    {name: 'Edit Route', icon:'./Images/Route.png'},
+    {name: 'Bus Request', icon:'./Images/BusReq.png'},
+    
+  ];
   return (
     <>
-        <div class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-            <div class="grid grid-cols-3 gap-4 mb-4">
-              <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-            </div>
-            <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-              <p class="text-2xl text-gray-400 dark:text-gray-500">
-                  <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                  </svg>
-              </p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-              <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-            </div>
-            <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-              <p class="text-2xl text-gray-400 dark:text-gray-500">
-                  <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                  </svg>
-              </p>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-            </div>
-        </div>
+      <div class="p-4 sm:ml-64">
+      <div className="mx-20">
+                    <div>
+                        <div className="p-10">
+                            <h1 className="text-3xl text-center text-red-900 font-bold">All Services</h1>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4">
+                            {serviceElement.map((ele) => {
+                                return (
+                                    <>
+                                        <div className="bg-red-200 text-red-800 text-center py-4 rounded-lg">
+                                            <div className="bg-black-200">
+                                                <p className='text-center py-2'>{ele.name}</p>
+                                                <img className='mx-auto' src={ele.icon} alt="" width={50} />
+                                            </div>
+                                        </div>
+                                    </>
+                                );
+                            })}
+                        </div>
+                    </div>
+          </div>
       </div>
     </>
   )
