@@ -8,7 +8,7 @@ const Services = (props) => {
     {name: 'Edit Bus', icon:'./Images/bus2.png',linkto:'/EditBus'},
     {name: 'Map', icon:'./Images/map.png', linkto:'/Map'},
     {name: 'Routes', icon:'./Images/Route.png', linkto:'/Routes'},
-    {name: 'Add Route', icon:'./Images/Route.png', linkto:'/Home'},
+    {name: 'Add Route', icon:'./Images/Route.png', linkto:'/AddRoute'},
     {name: 'Edit Route', icon:'./Images/Route.png',linkto:'/Home'},
     {name: 'Bus Request', icon:'./Images/BusReq.png', linkto:'/BusRequest'},
     

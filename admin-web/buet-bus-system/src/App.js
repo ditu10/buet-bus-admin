@@ -11,6 +11,7 @@ import BusRequest from './Pages/BusRequest/BusRequest';
 import AddBus from './Pages/AddBus/AddBus';
 import EditBus from './Pages/EditBus/EditBus';
 import RouteDetails from './Pages/RouteDetails/RouteDetails';
+import AddRoute from './Pages/AddRoute/AddRoute';
 
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='/AddNewBus' element={<AddBus/>}></Route>
           <Route path='/EditBus' element={<EditBus/>}></Route>
           <Route path='/RouteDetails' element={<RouteDetails/>}></Route>
+          <Route path='/AddRoute' element={<AddRoute/>}></Route>
 
           
 
