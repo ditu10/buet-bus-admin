@@ -12,6 +12,8 @@ const Services = (props) => {
     {name: 'Bus Request', icon:'./Images/BusReq.png'},
     
   ];
+
+  
   return (
     <>
       <div class="p-4 sm:ml-64">
@@ -24,7 +26,7 @@ const Services = (props) => {
                             {serviceElement.map((ele) => {
                                 return (
                                     <>
-                                        <div className="bg-red-200 text-red-800 text-center py-4 rounded-lg">
+                                        <div className="bg-gray-200 shadow-lg text-red-800 text-center py-4 rounded-lg">
                                             <div className="bg-black-200">
                                                 <p className='text-center py-2'>{ele.name}</p>
                                                 <img className='mx-auto' src={ele.icon} alt="" width={50} />
