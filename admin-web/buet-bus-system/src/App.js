@@ -8,6 +8,9 @@ import Buses from './Pages/Buses/Buses';
 import Employees from './Pages/Employees/Employees';
 import BusRoutes from './Pages/BusRoutes/BusRoutes';
 import BusRequest from './Pages/BusRequest/BusRequest';
+import AddBus from './Pages/AddBus/AddBus';
+import EditBus from './Pages/EditBus/EditBus';
+import RouteDetails from './Pages/RouteDetails/RouteDetails';
 
 
 
@@ -24,6 +27,10 @@ function App() {
           <Route path='/Employees' element={<Employees/>}></Route>
           <Route path='/Routes' element={<BusRoutes/>}></Route>\
           <Route path='/BusRequest' element={<BusRequest/>}></Route>
+          <Route path='/AddNewBus' element={<AddBus/>}></Route>
+          <Route path='/EditBus' element={<EditBus/>}></Route>
+          <Route path='/RouteDetails' element={<RouteDetails/>}></Route>
+
           
 
         </Routes>

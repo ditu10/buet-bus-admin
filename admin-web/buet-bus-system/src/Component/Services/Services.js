@@ -1,15 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Services = (props) => {
   const serviceElement = [
-    {name: 'Buses', icon:'./Images/bus2.png'},
-    {name: 'Add New Bus', icon:'./Images/bus2.png'},
-    {name: 'Edit Bus', icon:'./Images/bus2.png'},
-    {name: 'Map', icon:'./Images/map.png'},
-    {name: 'Routes', icon:'./Images/Route.png'},
-    {name: 'Add Route', icon:'./Images/Route.png'},
-    {name: 'Edit Route', icon:'./Images/Route.png'},
-    {name: 'Bus Request', icon:'./Images/BusReq.png'},
+    {name: 'Buses', icon:'./Images/bus2.png', linkto:'/Buses'},
+    {name: 'Add New Bus', icon:'./Images/bus2.png', linkto:'/AddNewBus'},
+    {name: 'Edit Bus', icon:'./Images/bus2.png',linkto:'/EditBus'},
+    {name: 'Map', icon:'./Images/map.png', linkto:'/Map'},
+    {name: 'Routes', icon:'./Images/Route.png', linkto:'/Routes'},
+    {name: 'Add Route', icon:'./Images/Route.png', linkto:'/Home'},
+    {name: 'Edit Route', icon:'./Images/Route.png',linkto:'/Home'},
+    {name: 'Bus Request', icon:'./Images/BusReq.png', linkto:'/BusRequest'},
     
   ];
 
@@ -26,12 +27,14 @@ const Services = (props) => {
                             {serviceElement.map((ele) => {
                                 return (
                                     <>
-                                        <div className="bg-gray-200 shadow-lg text-red-800 text-center py-4 rounded-lg">
-                                            <div className="bg-black-200">
-                                                <p className='text-center py-2'>{ele.name}</p>
-                                                <img className='mx-auto' src={ele.icon} alt="" width={50} />
+                                        <Link to={ele.linkto}>
+                                            <div className="bg-gray-200 shadow-lg text-red-800 text-center py-4 rounded-lg">
+                                                <div className="bg-black-200">
+                                                    <p className='text-center py-2'>{ele.name}</p>
+                                                    <img className='mx-auto' src={ele.icon} alt="" width={50} />
+                                                </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </>
                                 );
                             })}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const BusesComponent = () => {
     const allBuses = [
@@ -35,6 +36,15 @@ const BusesComponent = () => {
                                     </>
                                 );
                             })}
+                            <div className="bg-gray-200 text-red-800 text-center py-4 rounded-lg shadow-lg">
+                                            <Link to='/AddNewBus'>
+                                            <div className="bg-black-200">
+                                                <p className='text-center '>Add New Bus</p>
+                                                <p className='pb-3'></p>
+                                                <img className='mx-auto' src={icon} alt="" width={50} />
+                                            </div>
+                                            </Link>
+                            </div>
                         </div>
                     </div>
           </div>
