@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const BusesComponent = () => {
+    const [buses, setBuses] = useState([]);
+
+    const fetchData = async () => {
+        const url = ``;
+        const responsedata = await fetch(url);
+        const data = responsedata.json();
+        setBuses(data);
+    }
+    useEffect(()=>{
+        fetchData();
+    },[])
+    
     const allBuses = [
         {name: 'ঢাকা মেট্রো স', busno: '40-6032'},
         {name: 'ঢাকা মেট্রো স', busno: '40-6033'},
