@@ -9,42 +9,45 @@ export default function LoginPage() {
         console.log(username + "  " + password);
     })
 
-    const submit = async (e)=>{
+    const handleSignin = (e)=>{
         e.preventDefault();
+        const url = 'https://userservicebuetbus.azurewebsites.net/api/auth/signins';
 
         const admindata = {
             username : username,
             password : password
         }
-        console.log(admindata);
-        const url = `https://userservicebuetbus.azurewebsites.net/api/test/admin`;
+        console.log(JSON.stringify(admindata));
     
 
-        try {
-            const response = await fetch(url, {
-            mode: 'no-cors',
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(admindata),
-        });
+        try{
+            fetch(url, {
+                // mode: 'no-cors',
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(admindata),
+            }).then((res)=>res.json())
+            .then((data)=>{
+                console.log(data);
+                if(data.id){
+                    window.location.href = '/Home';
+                }
+                else{
+                    window.alert('Invalid username or password!! Enter valid username & password');
+                }
+            })
+            
+        }catch(error){
+            console.log("error: " + error)
+        }
+        
 
-        if (response) {
-            // Handle successful login
-           
-            console.log('Logged in:', response);
-            // window.location.href='/Home';
-        } else {
-            // Handle login error
-            console.error('Login failed');
-        }
-        } 
-        catch (error) {
-        console.error('Error:', error);
-        }
+    }
+        
 
-        }
+        
 
   return (
     <div>
@@ -61,7 +64,7 @@ export default function LoginPage() {
               </h1>
               <form id='login-form' class="space-y-4 md:space-y-6" action="#">
                   <div>
-                      <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Admin ID</label>
+                      <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Admin</label>
                       <input type="text" name="username" id="username" onChange={(e)=>{serUsername(e.target.value)}} class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="admin" required=""/>
                   </div>
                   <div>
@@ -80,10 +83,10 @@ export default function LoginPage() {
                       </div>
                       <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                   </div>
-                  <button onClick={(e) => submit(e)} type="submit" class="w-full text-white bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
-                  <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                  <button onClick={(e) => handleSignin(e)} type="submit" class="w-full text-white bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                  {/* <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                       Don’t have an account yet? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
-                  </p>
+                  </p> */}
               </form>
           </div>
       </div>

@@ -2,18 +2,31 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const BusesComponent = () => {
-    const [buses, setBuses] = useState([]);
+    // const [buses, setBuses] = useState([]);
 
-    const fetchData = async () => {
-        const url = ``;
-        const responsedata = await fetch(url);
-        const data = responsedata.json();
-        setBuses(data);
-    }
-    useEffect(()=>{
-        fetchData();
-    },[])
-    
+    // const fetchData = async () => {
+    //     const url = 'https://userservicebuetbus.azurewebsites.net/api/bus/get/1';
+    //     const dummyurl = `https://cors-anywhere.herokuapp.com${url}`;
+    //     try{
+    //         await fetch(dummyurl,{
+    //             mode: 'no-cors',
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //         })
+    //         .then((res)=>res.json())
+    //         .then((data)=>{
+    //             console.log(data)
+    //         })
+    //     }catch(err){
+    //         console.log(err); 
+    //     }
+    // }
+
+    // useEffect(()=>{
+    //     fetchData();
+    // },[])
+
     const allBuses = [
         {name: 'ঢাকা মেট্রো স', busno: '40-6032'},
         {name: 'ঢাকা মেট্রো স', busno: '40-6033'},
