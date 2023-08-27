@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BusesComponent = () => {
     const [buses, setBuses] = useState([]);
+    const [singlebus, setSinglebus] = useState([]);
 
     const fetchData = async () => {
         const url = 'http://localhost:5000/buses';
@@ -22,9 +23,22 @@ const BusesComponent = () => {
             console.log(err); 
         }
     }
+    const fetchsinglebus = async ()=>{
+        const azureurl = 'https://userservicebuetbus.azurewebsites.net/api/bus/get/1';
+        try{
+            await fetch(azureurl)
+            .then((res)=>res.json())
+            .then((data)=>{
+                console.log(data);
+            })
+        }catch(err){
+            console.log(err);
+        }
+    }
 
     useEffect(()=>{
         fetchData();
+        fetchsinglebus();
     },[])
 
     // const allBuses = [
