@@ -1,11 +1,77 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const EmployeeComponent = () => {
+  const [reload, setReload] = useState(false);
+  const [staffs, setStaffs] = useState([]);
+  const url = 'http://localhost:5000/staff';
+
+  useEffect(()=>{
+    fetch(url)
+    .then(res => res.json())
+    .then(data => setStaffs(data))
+  },[reload])
+
+  const deleteStaff = async (id) =>{
+    
+    try{
+      const decision = window.confirm("Press 'OK' to confirm delete"); 
+      console.log(decision);
+      if(!decision)
+        return ;
+      const url = `http://localhost:5000/staff/${id}`;
+      const data = await fetch(url,{
+        method: 'post',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body : JSON.stringify({})
+      })
+      console.log(data)
+      setReload(!reload)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return (
     <>
-        <div class="p-4 sm:ml-64">
-            This is a Employees Page
-        </div>
+      <div class="p-4 sm:ml-64">
+      <div className="mx-20">
+                    <div>
+                        <div className="p-10">
+                            <h1 className="text-3xl text-center text-red-900 font-bold">All Bus Staffs</h1>
+                        </div>
+                        <div className="grid grid-cols-4 gap-4">
+                            {staffs.map((ele) => {
+                                return (
+                                    <>
+                                        
+                                            <div key={ele._id} className="bg-gray-200 shadow-lg text-red-800 text-center py-4 rounded-lg">
+                                                <div className="bg-black-200">
+                                                    <div>
+                                                    <img className='mx-auto' src='./Images/user.png' alt = "userpic" />
+                                                    </div>
+                                                    <p className='text-center py-2'>{ele.name}</p>
+                                                    <p>{ele.role}</p>
+                                                    <p className='pb-2'>{ele.dob}</p>
+
+                                                    <button class="hover:bg-transparent bg-red-800 text-gray-100 font-semibold hover:text-red-800 py-1 px-2 border hover:border-red-900 border-transparent rounded-full mx-1">
+                                                    Update
+                                                  </button> 
+                                                                                                      
+                                                    <button onClick={(e)=> deleteStaff(ele._id)} class="hover:bg-transparent bg-red-800 text-gray-100 font-semibold hover:text-red-800 py-1 px-2 border hover:border-red-900 border-transparent rounded-full mx-1">
+                                                      Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        
+                                    </>
+                                );
+                            })}
+                        </div>
+                    </div>
+          </div>
+      </div>
     </>
   )
 }

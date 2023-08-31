@@ -41,18 +41,18 @@ const BusesComponent = () => {
         fetchsinglebus();
     },[])
 
-    // const allBuses = [
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6032'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6033'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6034'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6036'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6031'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6042'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6041'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6044'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6045'},
-    //     {name: 'ঢাকা মেট্রো স', busno: '40-6046'},
-    // ];
+    const allBuses = [
+        {name: 'ঢাকা মেট্রো স', busno: '40-6032'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6033'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6034'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6036'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6031'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6042'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6041'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6044'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6045'},
+        {name: 'ঢাকা মেট্রো স', busno: '40-6046'},
+    ];
     const icon = './Images/bus2.png';
     return (
         <div class="p-4 sm:ml-64">
@@ -62,7 +62,7 @@ const BusesComponent = () => {
                             <h1 className="text-3xl text-center text-red-900 font-bold">All Buses</h1>
                         </div>
                         <div className="grid grid-cols-4 gap-4">
-                            {buses.map((ele) => {
+                            {allBuses.map((ele) => {
                                 return (
                                     <>
                                         <div className="bg-gray-200 text-red-800 text-center py-4 rounded-lg shadow-lg">
