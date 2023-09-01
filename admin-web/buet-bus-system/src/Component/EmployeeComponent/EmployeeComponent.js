@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const EmployeeComponent = () => {
   const [reload, setReload] = useState(false);
@@ -48,10 +49,13 @@ const EmployeeComponent = () => {
                                         
                                             <div key={ele._id} className="bg-gray-200 shadow-lg text-red-800 text-center py-4 rounded-lg">
                                                 <div className="bg-black-200">
+                                                    <Link key={ele._id} to={`/EmployeeDetails/${ele._id}`}>
                                                     <div>
                                                     <img className='mx-auto' src='./Images/user.png' alt = "userpic" />
                                                     </div>
-                                                    <p className='text-center py-2'>{ele.name}</p>
+                                                    
+                                                      <p className='text-center py-2'>{ele.name}</p>
+                                                    </Link>
                                                     <p>{ele.role}</p>
                                                     <p className='pb-2'>{ele.dob}</p>
 

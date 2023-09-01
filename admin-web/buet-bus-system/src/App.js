@@ -12,6 +12,11 @@ import AddBus from './Pages/AddBus/AddBus';
 import EditBus from './Pages/EditBus/EditBus';
 import RouteDetails from './Pages/RouteDetails/RouteDetails';
 import AddRoute from './Pages/AddRoute/AddRoute';
+import { AddEmployee } from './Pages/AddEmployee/AddEmployee';
+import { EditEmployee } from './Pages/EditEmployee/EditEmployee';
+import { EmployeeDetails } from './Pages/EmployeeDetails/EmployeeDetails';
+
+
 
 
 
@@ -32,6 +37,10 @@ function App() {
           <Route path='/EditBus' element={<EditBus/>}></Route>
           <Route path='/RouteDetails' element={<RouteDetails/>}></Route>
           <Route path='/AddRoute' element={<AddRoute/>}></Route>
+          <Route path={`/EmployeeDetails/:id`} action={({ params }) => {}} element={<EmployeeDetails/>}></Route>
+          <Route path='/AddEmployee' element={<AddEmployee/>}></Route>
+          <Route path='/EditEmployee' element={<EditEmployee/>}></Route>
+
 
           
 
