@@ -1,25 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 
 const RoutesComponent = () => {
-  const allRoutes = [
-    {routeName:'Uttara', routeid:'1'},
-    {routeName:'Mirpur', routeid:'2'},
-    {routeName:'Badda', routeid:'3'},
-    {routeName:'SadarGhat', routeid:'4'},
-    {routeName:'Gabtoli', routeid:'5'},
-    {routeName:'Tongi', routeid:'6'},
-    {routeName:'Gazipur', routeid:'7'},
-    {routeName:'Banani', routeid:'8'},
-    {routeName:'Mohammadpur', routeid:'9'},
-  ];
-  
+  const [routes, setRoutes] = useState([])
   const linkto=`/RouteDetails`;
   const icon = './Images/Route.png';
-  const dataToSend = {
-    name: 'John',
-    age: 25,
-  };
+  const url = 'http://localhost:5000/route'
+  useEffect(()=>{
+    fetch(url)
+    .then(res => res.json())
+    .then(data => setRoutes(data))
+  },[])
+  
   return (
     <>
         <div class="p-4 sm:ml-64">
@@ -29,11 +21,11 @@ const RoutesComponent = () => {
                             <h1 className="text-3xl text-center text-red-900 font-bold">Routes</h1>
                         </div>
                         <div className="grid grid-cols-4 gap-4">
-                            {allRoutes.map((ele) => {
+                            {routes.map((ele) => {
                                 // console.log(ele.routeid)
                                 return (
                                     <>
-                                        <NavLink to={{ pathname: `/RouteDetails`}}>
+                                        <Link key={ele._id} to={`/RouteDetails/${ele._id}`}>
                                         <div className="bg-gray-200 shadow-lg text-red-800 text-center py-4 rounded-lg">
                                             <div className="bg-black-200">
                                                 <p className='text-center py-2 '>{ele.routeName}</p>
@@ -41,7 +33,7 @@ const RoutesComponent = () => {
                                                 <img className='mx-auto' src={icon} alt="" width={50} />
                                             </div>
                                         </div>
-                                        </NavLink>
+                                        </Link>
                                     </>
                                 );
                             })}
