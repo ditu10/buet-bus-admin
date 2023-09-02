@@ -12,6 +12,8 @@ const EmployeeComponent = () => {
     .then(data => setStaffs(data))
   },[reload])
 
+ 
+
   const deleteStaff = async (id) =>{
     
     try{
@@ -59,9 +61,11 @@ const EmployeeComponent = () => {
                                                     <p className='pb-2'>{ele.role}</p>
                                                     
 
+                                                    <Link key={ele._id} to={`/EditEmployee/${ele._id}`}>
                                                     <button class="hover:bg-transparent bg-red-800 text-gray-100 font-semibold hover:text-red-800 py-1 px-2 border hover:border-red-900 border-transparent rounded-full mx-1">
                                                     Update
-                                                  </button> 
+                                                    </button> 
+                                                    </Link>
                                                                                                       
                                                     <button onClick={(e)=> deleteStaff(ele._id)} class="hover:bg-transparent bg-red-800 text-gray-100 font-semibold hover:text-red-800 py-1 px-2 border hover:border-red-900 border-transparent rounded-full mx-1">
                                                       Delete

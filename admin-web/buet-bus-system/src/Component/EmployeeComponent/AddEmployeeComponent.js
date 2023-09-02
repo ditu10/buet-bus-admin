@@ -13,8 +13,12 @@ export const AddEmployeeComponent = () => {
   const url = 'http://localhost:5000/staff';
 
   const handleAddEmployee = (e) =>{
-    if(name.current.value == "" || staffId.current.value == "" || NID.current.value == "" || dob.current.value == ""){
+    if(name.current.value === "" || staffId.current.value === "" || NID.current.value === "" || dob.current.value === ""){
       window.alert("Name, StaffId and NID are required")
+      return ;
+    }
+    const sure = window.confirm("Press 'OK' to confirm adding the new staff");
+    if(!sure){
       return ;
     }
     e.preventDefault();
@@ -47,7 +51,9 @@ export const AddEmployeeComponent = () => {
       },
       body : JSON.stringify(newStaff)
     }).then(res => res.json())
-    .then(data => console.log(data))
+    .then(data =>{
+      
+    })
 
   }
   

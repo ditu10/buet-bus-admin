@@ -20,6 +20,10 @@ const AddRouteComponent = () => {
     
     const handleAddRoute = (e) =>{
         e.preventDefault();
+        const sure = window.confirm("Press OK to confirm Adding the route");
+        if(!sure){
+            return ;
+        }
         const newRoute = {
             routeName : routeName.current.value,
             routeId : routeId.current.value,
@@ -36,6 +40,7 @@ const AddRouteComponent = () => {
             body: JSON.stringify(newRoute)
         }).then(res => res.json())
         .then(data => console.log(data))
+        window.location.href ='/Routes'
     }
 
     const handleDeletePickups = (e) =>{

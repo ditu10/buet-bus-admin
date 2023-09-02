@@ -39,7 +39,7 @@ function App() {
           <Route path='/AddRoute' element={<AddRoute/>}></Route>
           <Route path='/EmployeeDetails/:id' action={({ params }) => {}} element={<EmployeeDetails/>}></Route>
           <Route path='/AddEmployee' element={<AddEmployee/>}></Route>
-          <Route path='/EditEmployee' element={<EditEmployee/>}></Route>
+          <Route path='/EditEmployee/:id' element={<EditEmployee/>}></Route>
 
 
           
