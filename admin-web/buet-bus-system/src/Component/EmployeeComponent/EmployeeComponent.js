@@ -54,10 +54,10 @@ const EmployeeComponent = () => {
                                                     <img className='mx-auto' src='./Images/user.png' alt = "userpic" />
                                                     </div>
                                                     
-                                                      <p className='text-center py-2'>{ele.name}</p>
+                                                      <p className='text-center pt-2'>{ele.name}</p>
                                                     </Link>
-                                                    <p>{ele.role}</p>
-                                                    <p className='pb-2'>{ele.dob}</p>
+                                                    <p className='pb-2'>{ele.role}</p>
+                                                    
 
                                                     <button class="hover:bg-transparent bg-red-800 text-gray-100 font-semibold hover:text-red-800 py-1 px-2 border hover:border-red-900 border-transparent rounded-full mx-1">
                                                     Update

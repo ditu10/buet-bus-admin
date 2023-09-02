@@ -16,14 +16,43 @@ export const SingleEmployeeComponent = () => {
   return (
     <>
       <div class="p-4 sm:ml-64">
-        <div className="mx-20">
-            <h1>Name : {staff.name}</h1>
-            <p>Staff ID : {staff.staffId}</p>
-            <p>Role : {staff.role}</p>
-            <p>Date of Birth : {staff.dob}</p>
-            <p>Licence : {staff.licence? staff.licence : "Not Given"}</p>
-            <p>Mobile No : {staff.mobileNo? staff.mobileNo : "Not Given"}</p>
-        </div>
+      <p className='text-center mt-10 text-3xl text-red-800'>User Profile</p>
+      <div className='flex items-center justify-center mt-6'>
+        
+      <table className="table-fixed border-collapse	text-left border-2">
+        <tbody>
+          <tr >
+            <th className='border-2 p-4'>Name</th>
+            <td  className='border-2 p-4'>{staff.name}</td>
+          </tr>
+          <tr>
+            <th className='border-2 p-4'>Staff ID</th>
+            <td className='border-2 p-4'>{staff.staffId}</td>
+          </tr>
+          <tr>
+            <th className='border-2 p-4'>Role</th>
+            <td className='border-2 p-4'>{staff.role}</td>
+          </tr>
+          <tr>
+            <th className='border-2 p-4'>Date Of Birth</th>
+            <td className='border-2 p-4'>{staff.dob?.slice(0,10)}</td>
+          </tr>
+          <tr>
+            <th className='border-2 p-4'>NID</th>
+            <td className='border-2 p-4'>{staff.NID}</td>
+          </tr>
+          <tr>
+            <th className='border-2 p-4'>License</th>
+            <td className='border-2 p-4'>{staff.license}</td>
+          </tr>
+          <tr>
+            <th className='border-2 p-4'>Mobile</th>
+            <td className='border-2 p-4'>{staff.mobile}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
         
       </div>
     </>
