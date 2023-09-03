@@ -25,6 +25,10 @@ const BusesComponent = () => {
         fetchData();
     },[])
 
+    const handleUnavailable = (e) =>{
+        e.preventDefault();
+    }
+
     
     const icon = './Images/bus2.png';
     return (
@@ -40,12 +44,16 @@ const BusesComponent = () => {
                                     <>
                                         <div className="bg-gray-200 text-red-800 text-center py-4 rounded-lg shadow-lg">
                                             <div className="bg-black-200">
-                                                <Link>
+                                                <Link to={`/BusDetails/${ele._id}`}>
                                                 <img className='mx-auto pb-2' src={icon} alt="" width={50} />
                                                 </Link>
-                                                <p className='text-center '> <span className='text-gray-800'>Bus Name</span> : {ele?.busName}</p>
-                                                <p className='pb-1'><span className='text-gray-800'>Bus No : </span> {ele?.busNo}</p>
+                                                {/* <p className='text-center '> <span className='text-gray-800'>Bus Name</span> : {ele?.busName}</p> */}
+                                                <p className=''><span className='text-gray-800'>Bus No : </span> {ele?.busNo}</p>
                                                 <p className='text-center'><span className='text-gray-800'>Route : </span> {ele?.route?.routeName}</p>
+                                                <div>
+                                                <button onClick={(e) => handleUnavailable(e)} className='border-1 rounded-full bg-gray-700 text-gray-100 px-2 py-1 mx-1'>Unavailable</button>
+                                                <button onClick={(e) => handleUnavailable(e)}className='border-1 rounded-full bg-gray-700 text-gray-100 mx-1 px-2 py-1'>Available</button>
+                                                </div>
                                                 
                                             </div>
                                         </div>
