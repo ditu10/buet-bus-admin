@@ -9,7 +9,6 @@ const Services = (props) => {
     {name: 'Add new Employee', icon:'./Images/user.png', linkto:'/AddEmployee'},
     {name: 'Routes', icon:'./Images/Route.png', linkto:'/Routes'},
     {name: 'Add Route', icon:'./Images/Route.png', linkto:'/AddRoute'},
-    {name: 'Map', icon:'./Images/map.png', linkto:'/Map'},
     {name: 'Bus Request', icon:'./Images/BusReq.png', linkto:'/BusRequest'},
     
   ];
