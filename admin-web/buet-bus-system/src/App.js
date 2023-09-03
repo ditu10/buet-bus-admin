@@ -16,6 +16,7 @@ import { AddEmployee } from './Pages/AddEmployee/AddEmployee';
 import { EditEmployee } from './Pages/EditEmployee/EditEmployee';
 import { EmployeeDetails } from './Pages/EmployeeDetails/EmployeeDetails';
 import { EditRoute } from './Pages/EditRoute/EditRoute';
+import { SingleBusDetails } from './Pages/SingleBusDetails/SingleBusDetails';
 
 
 
@@ -34,6 +35,7 @@ function App() {
           <Route path='/Buses' element={<Buses/>}></Route>
           <Route path='/AddNewBus' element={<AddBus/>}></Route>
           <Route path='/EditBus' element={<EditBus/>}></Route>
+          <Route path='/BusDetails/:id' element={<SingleBusDetails/>}></Route>
           {/* Bus Routes */}
           <Route path='/Routes' element={<BusRoutes/>}></Route>
           <Route path='/RouteDetails/:id' element={<RouteDetails/>}></Route>

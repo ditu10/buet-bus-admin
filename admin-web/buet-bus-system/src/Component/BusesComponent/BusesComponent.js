@@ -40,10 +40,13 @@ const BusesComponent = () => {
                                     <>
                                         <div className="bg-gray-200 text-red-800 text-center py-4 rounded-lg shadow-lg">
                                             <div className="bg-black-200">
-                                                <p className='text-center '>Bus Name : {ele?.busName}</p>
-                                                <p className='pb-3'>Bus NO : {ele?.busNo}</p>
-                                                <img className='mx-auto' src={icon} alt="" width={50} />
-                                                <p className='text-center pt-3'>Driver : {ele?.driver?.name}</p>
+                                                <Link>
+                                                <img className='mx-auto pb-2' src={icon} alt="" width={50} />
+                                                </Link>
+                                                <p className='text-center '> <span className='text-gray-800'>Bus Name</span> : {ele?.busName}</p>
+                                                <p className='pb-1'><span className='text-gray-800'>Bus No : </span> {ele?.busNo}</p>
+                                                <p className='text-center'><span className='text-gray-800'>Route : </span> {ele?.route?.routeName}</p>
+                                                
                                             </div>
                                         </div>
                                     </>
