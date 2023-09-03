@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const Services = (props) => {
   const serviceElement = [
+    {name: 'Buses', icon:'./Images/bus2.png', linkto:'/Buses'},
     {name: 'Add New Bus', icon:'./Images/bus2.png', linkto:'/AddNewBus'},
+    {name: 'Employees', icon:'./Images/user.png', linkto:'/Employees'},
     {name: 'Add new Employee', icon:'./Images/user.png', linkto:'/AddEmployee'},
-    {name: 'Edit Bus', icon:'./Images/bus2.png',linkto:'/EditBus'},
-    {name: 'Map', icon:'./Images/map.png', linkto:'/Map'},
     {name: 'Routes', icon:'./Images/Route.png', linkto:'/Routes'},
     {name: 'Add Route', icon:'./Images/Route.png', linkto:'/AddRoute'},
-    {name: 'Edit Route', icon:'./Images/Route.png',linkto:'/Home'},
+    {name: 'Map', icon:'./Images/map.png', linkto:'/Map'},
     {name: 'Bus Request', icon:'./Images/BusReq.png', linkto:'/BusRequest'},
     
   ];

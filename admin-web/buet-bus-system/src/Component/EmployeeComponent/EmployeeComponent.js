@@ -28,6 +28,11 @@ const EmployeeComponent = () => {
           "Content-Type": "application/json"
         },
         body : JSON.stringify({})
+      }).then(res =>{
+        console.log(res);
+        if(res.status === 200){
+          window.alert("Deleted successfully");
+        }
       })
       console.log(data)
       setReload(!reload)

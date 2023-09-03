@@ -15,6 +15,7 @@ import AddRoute from './Pages/AddRoute/AddRoute';
 import { AddEmployee } from './Pages/AddEmployee/AddEmployee';
 import { EditEmployee } from './Pages/EditEmployee/EditEmployee';
 import { EmployeeDetails } from './Pages/EmployeeDetails/EmployeeDetails';
+import { EditRoute } from './Pages/EditRoute/EditRoute';
 
 
 
@@ -29,18 +30,22 @@ function App() {
           <Route path='/' element={<LoginPage/>}></Route>
           <Route path='/Home' element={<Home/>}></Route>
           <Route path='/Map' element={<Map/>}></Route>
+           {/* Buses  */}
           <Route path='/Buses' element={<Buses/>}></Route>
-          <Route path='/Employees' element={<Employees/>}></Route>
-          <Route path='/Routes' element={<BusRoutes/>}></Route>\
-          <Route path='/BusRequest' element={<BusRequest/>}></Route>
           <Route path='/AddNewBus' element={<AddBus/>}></Route>
           <Route path='/EditBus' element={<EditBus/>}></Route>
+          {/* Bus Routes */}
+          <Route path='/Routes' element={<BusRoutes/>}></Route>
           <Route path='/RouteDetails/:id' element={<RouteDetails/>}></Route>
           <Route path='/AddRoute' element={<AddRoute/>}></Route>
+          <Route path='/EditRoute/:id' element={<EditRoute/>}></Route>
+          {/* Employees */}
+          <Route path='/Employees' element={<Employees/>}></Route>
           <Route path='/EmployeeDetails/:id' action={({ params }) => {}} element={<EmployeeDetails/>}></Route>
           <Route path='/AddEmployee' element={<AddEmployee/>}></Route>
           <Route path='/EditEmployee/:id' element={<EditEmployee/>}></Route>
-
+          {/* Bus request */}
+          <Route path='/BusRequest' element={<BusRequest/>}></Route>
 
           
 

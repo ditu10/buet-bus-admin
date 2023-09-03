@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-const RouteDetailsComponent = () => {
-  const [route,setRoute] = useState({})
+export const EditRouteComponent = () => {
+    const [route,setRoute] = useState({})
   const {id} = useParams();
 //   console.log(id);
   const url = 'http://localhost:5000/route/'+id ;
@@ -26,7 +26,7 @@ const RouteDetailsComponent = () => {
         <div className="mx-20">
                     <div>
                         <div className="p-10">
-                            <h1 className="text-3xl text-center text-red-900 font-bold">Route Details</h1>
+                            <h1 className="text-3xl text-center text-red-900 font-bold">Edit Route</h1>
                         </div>
                         <div className='text-center mb-5'>
                             <p>Route Name : <span className='text-red-800'>{route.routeName}</span></p>
@@ -58,5 +58,3 @@ const RouteDetailsComponent = () => {
     </>
   )
 }
-
-export default RouteDetailsComponent

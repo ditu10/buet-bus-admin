@@ -6,14 +6,10 @@ const BusesComponent = () => {
     const [singlebus, setSinglebus] = useState([]);
 
     const fetchData = async () => {
-        const url = 'http://localhost:5000/buses';
+        const url = 'http://localhost:5000/bus';
         // const dummyurl = `https://cors-anywhere.herokuapp.com${url}`;
         try{
-            await fetch(url,{
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            })
+            await fetch(url)
             .then((res)=>res.json())
             .then((data)=>{
                 console.log(data);
@@ -23,36 +19,13 @@ const BusesComponent = () => {
             console.log(err); 
         }
     }
-    const fetchsinglebus = async ()=>{
-        const azureurl = 'https://userservicebuetbus.azurewebsites.net/api/bus/get/1';
-        try{
-            await fetch(azureurl)
-            .then((res)=>res.json())
-            .then((data)=>{
-                console.log(data);
-            })
-        }catch(err){
-            console.log(err);
-        }
-    }
+    
 
     useEffect(()=>{
         fetchData();
-        fetchsinglebus();
     },[])
 
-    const allBuses = [
-        {name: 'ঢাকা মেট্রো স', busno: '40-6032'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6033'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6034'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6036'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6031'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6042'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6041'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6044'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6045'},
-        {name: 'ঢাকা মেট্রো স', busno: '40-6046'},
-    ];
+    
     const icon = './Images/bus2.png';
     return (
         <div class="p-4 sm:ml-64">
@@ -62,21 +35,21 @@ const BusesComponent = () => {
                             <h1 className="text-3xl text-center text-red-900 font-bold">All Buses</h1>
                         </div>
                         <div className="grid grid-cols-4 gap-4">
-                            {allBuses.map((ele) => {
+                            {buses.map((ele) => {
                                 return (
                                     <>
                                         <div className="bg-gray-200 text-red-800 text-center py-4 rounded-lg shadow-lg">
                                             <div className="bg-black-200">
-                                                <p className='text-center '>{ele.name}</p>
-                                                <p className='pb-3'>{ele.busno}</p>
+                                                <p className='text-center '>Bus Name : {ele?.busName}</p>
+                                                <p className='pb-3'>Bus NO : {ele?.busNo}</p>
                                                 <img className='mx-auto' src={icon} alt="" width={50} />
-                                                <p className='text-center pt-3'>Driver : {ele.driver} Mia</p>
+                                                <p className='text-center pt-3'>Driver : {ele?.driver?.name}</p>
                                             </div>
                                         </div>
                                     </>
                                 );
                             })}
-                            <div className="bg-gray-200 text-red-800 text-center py-4 rounded-lg shadow-lg">
+                            {/* <div className="bg-gray-200 text-red-800 text-center py-4 rounded-lg shadow-lg">
                                             <Link to='/AddNewBus'>
                                             <div className="bg-black-200">
                                                 <p className='text-center '>Add New Bus</p>
@@ -85,7 +58,7 @@ const BusesComponent = () => {
                                                 
                                             </div>
                                             </Link>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
           </div>

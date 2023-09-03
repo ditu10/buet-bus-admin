@@ -1,53 +1,71 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const AddBusForm = () => {
     const busName = useRef();
     const busType = useRef();
     const busNo = useRef();
     const dateOfActivation = useRef();
-    const driverName = useRef();
-    const helperName = useRef();
-    const routeName = useRef();
+    const driver = useRef();
+    const helper = useRef();
+    const route = useRef();
+    const capacity = useRef();
+    const regNo = useRef();
 
-    const allRoutes = [
-        {routeName:'Uttara', routeid:1},
-        {routeName:'Mirpur', routeid:2},
-        {routeName:'Badda', routeid:3},
-        {routeName:'SadarGhat', routeid:4},
-        {routeName:'Gabtoli', routeid:5},
-        {routeName:'Tongi', routeid:6},
-        {routeName:'Gazipur', routeid:7},
-        {routeName:'Banani', routeid:8},
-        {routeName:'Mohammadpur', routeid:9},
-      ];
+    const [routes, setRoutes] = useState([]);
+    const [staffs, setStaffs] = useState([]);
+
+    const routesUrl = 'http://localhost:5000/route';
+    const staffUrl = 'http://localhost:5000/staff';
+
+    useEffect(()=>{
+        fetch(routesUrl)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setRoutes(data)
+        })
+
+        fetch(staffUrl)
+        .then(res=>res.json())
+        .then(data => {
+            console.log(data);
+            setStaffs(data);
+        })
+    },[])
+
+    const url = 'http://localhost:5000/bus'
 
       const handleSubmit =(e)=>{
         e.preventDefault();
-        const newbusName = busName.current.value;
-        const newbusNo = busNo.current.value;
-        const newbusType = busType.current.value;
-        const newdate = dateOfActivation.current.value;
-        const newdriverName = driverName.current.value;
-        const newhelperName = helperName.current.value;
-        const newrouteName = routeName.current.value;
-
-        const busData = {
-            newbusName,
-            newbusNo,
-            newbusType,
-            newdate,
-            newdriverName,
-            newhelperName,
-            newrouteName
-            
+        const newBus = {
+            busName : busName.current.value,
+            busNo : busNo.current.value,
+            regNo : regNo.current.value,
+            busType : busType.current.value,
+            dateOfActivation : dateOfActivation.current.value.slice(0,10),
+            capacity : capacity.current.value,
+            driver : driver.current.value,
+            helper : helper.current.value,
+            route : route.current.value
         }
-        console.log(busData);
-        fetch('http://localhost:5000/bus',{
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(busData)
+        if(newBus.helper ===""){delete newBus.helper}
+        if(newBus.driver === ""){delete newBus.driver}
+        if(newBus.route ===""){delete newBus.route}
+        console.log(newBus);
+        if(newBus.busName ==="" || newBus.busNo === "" || newBus.regNo === ""){
+            window.alert("busName, BusType & regNo are mandatory!");
+            return ;
+        }
+
+        fetch(url,{
+            method : "POST",
+            headers : { 'Content-Type': 'application/json' },
+            body : JSON.stringify(newBus)
         }).then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+        })
+        
       }
   return (
     <>
@@ -58,46 +76,22 @@ const AddBusForm = () => {
             <div className='w-5/6 mx-auto'>
             
                 <div class="grid  md:grid-cols-2 md:gap-6">
-                <div class="relative z-0  mb-6 group">
-                    <input ref={busName} type="text" name="bus_name" id="bus_name" class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
-                    <label for="bus_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">New Bus Name</label>
+                <div class="relative z-0  mb-4 group">
+                <label for="busName" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Bus Name</label>
+                            <input ref={busName} type="text" id="busName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="" required/>
                 </div>
-                <div class="relative z-0  mb-6 group">
-                <input ref={busNo} type="text" name="bus_number" id="bus_number" class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
-                    <label for="bus_number" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">New Bus Number</label>
+                <div class="relative z-0  mb-4 group">
+                <label for="busNo" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Bus No</label>
+                            <input ref={busNo} type="text" id="busNo" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="" required/>
                 </div>
-                <div class="relative z-0  mb-6 group">
-                    <input ref={dateOfActivation} type="date" name="activating_date" id="activating_date" class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
-                    <label for="activating_date" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date for Activating</label>
+                <div class="relative z-0  mb-4 group">
+                <label for="capacity" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Reg No</label>
+                            <input ref={regNo} type="text" id="regNo" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="" required/>
                 </div>
-                <div class="relative z-0  mb-6 group">
-                <input ref={driverName} type="text" name="driver" id="driver" class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
-                    <label for="driver" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Driver Name</label>
+                <div class="relative z-0  mb-4 group">
+                <label for="capacity" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">capacity</label>
+                            <input ref={capacity} type="number" id="capacity" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="" required/>
                 </div>
-
-                <div class="relative z-0  mb-6 group">
-                <input ref={helperName} type="text" name="helper" id="helper" class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
-                    <label for="helper" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Helper Name</label>
-                </div>
-                
-                
-                
-            </div>
-
-            <div class="grid  md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-                    
-                    <label for="bus_route" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Route</label>
-                    <select ref={routeName} id="bus_route" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    {allRoutes.map((ele)=>{
-                        return(
-                        <option>{ele.routeName}</option>
-                        );
-                    })}
-                    </select>
-                    
-                </div>
-
                 <div class="relative z-0  mb-6 group">
                     
                     <label for="bus_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Bus Type</label>
@@ -108,7 +102,68 @@ const AddBusForm = () => {
                     </select>
 
                 </div>
+                
+                <div class="relative z-0 w-full mb-6 group">
+                    
+                    <label for="bus_route" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Route</label>
+                    <select ref={route} id="bus_route" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    {routes?.map((ele)=>{
+                        return(
+                        <option value={ele._id}>{ele.routeName}</option>
+                        );
+                    })}
+                    <option value="">Not Assigned</option>
+                    </select>
+                    
+                </div>
+
+                <div class="relative z-0 w-full mb-6 group">
+                    
+                    <label for="driver" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Driver</label>
+                    <select ref={driver} id="driver" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    {staffs?.map((ele)=>{
+                        if(ele.role === "Helper"){
+                            return <></>
+                        }
+                        return(
+                        <option value={ele._id}>{ele.name} ({ele.staffId})</option>
+                        );
+                    })}
+                    <option value="">Not Assigned</option>
+                    </select>
+                    
+                </div>
+
+                <div class="relative z-0 w-full mb-6 group">
+                    
+                    <label for="helper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Helper</label>
+                    <select ref={helper} id="helper" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    {staffs?.map((ele)=>{
+                        if(ele.role ==='Driver'){
+                            return <></>
+                        }   
+                        return(
+                            <option value={ele._id}>{ele.name} ({ele.staffId})</option>
+                            );
+                        
+                    })}
+                    <option value="">Not Assigned</option>
+                    </select>
+                    
+                </div>
+
+                <div class="relative z-0  mb-4 group">
+                <label for="dataOfActivation" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Extimated Date Of Activation</label>
+                            <input ref={dateOfActivation} type="date" id="dateOfActivation" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="" required/>
+                </div>
+
+                
+                
+                
+                
             </div>
+
+          
 
             
             

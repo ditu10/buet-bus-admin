@@ -24,11 +24,16 @@ const AddRouteComponent = () => {
         if(!sure){
             return ;
         }
+        
         const newRoute = {
             routeName : routeName.current.value,
             routeId : routeId.current.value,
             departureTime : departureTime.current.value,
             pickupPoints : pickUps
+        }
+        if(newRoute.routeName === "" || newRoute.routeId === "" || newRoute.pickupPoints.length == 0){
+            window.alert('Route Name, route Id and pickupPoints are Mandatory!!');
+            return ;
         }
         console.log(newRoute);
         routeName.current.value = "";
