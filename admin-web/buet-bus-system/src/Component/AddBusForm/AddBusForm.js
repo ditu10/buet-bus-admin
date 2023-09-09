@@ -64,6 +64,10 @@ const AddBusForm = () => {
         }).then(res => res.json())
         .then(data => {
             console.log(data);
+            if(data?._id){
+                window.alert("New Bus Added Successfully");
+                window.location.href = '/buses';
+            }
         })
         
       }

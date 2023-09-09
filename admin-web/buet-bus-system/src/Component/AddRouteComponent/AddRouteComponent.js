@@ -55,7 +55,7 @@ const AddRouteComponent = () => {
 
     const handleAddPickups = (e) =>{
         e.preventDefault();
-        if(time == "" || place == ""){
+        if(time === "" || place === ""){
             return ;
         }
         // console.log(time, place);

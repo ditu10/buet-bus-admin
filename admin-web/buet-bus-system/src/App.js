@@ -34,7 +34,7 @@ function App() {
            {/* Buses  */}
           <Route path='/Buses' element={<Buses/>}></Route>
           <Route path='/AddNewBus' element={<AddBus/>}></Route>
-          <Route path='/EditBus' element={<EditBus/>}></Route>
+          <Route path='/EditBus/:id' element={<EditBus/>}></Route>
           <Route path='/BusDetails/:id' element={<SingleBusDetails/>}></Route>
           {/* Bus Routes */}
           <Route path='/Routes' element={<BusRoutes/>}></Route>
