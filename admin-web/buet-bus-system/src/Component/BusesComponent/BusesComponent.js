@@ -48,7 +48,7 @@ const BusesComponent = () => {
         .then(data => {
             console.log(data);
             window.alert("Successfully deleted the bus");
-            setReload(true);
+            setReload(!reload);
         })
     }
 

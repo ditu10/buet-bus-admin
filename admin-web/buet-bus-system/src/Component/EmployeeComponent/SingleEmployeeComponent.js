@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export const SingleEmployeeComponent = () => {
   const [staff, setStaff] = useState({})
@@ -11,6 +11,7 @@ export const SingleEmployeeComponent = () => {
     fetch(url)
     .then(res => res.json())
     .then(data => setStaff(data))
+
   },[])
   
   return (
@@ -48,6 +49,14 @@ export const SingleEmployeeComponent = () => {
           <tr>
             <th className='border-2 p-4'>Mobile</th>
             <td className='border-2 p-4'>{staff.mobile}</td>
+          </tr>
+          <tr>
+            <th className='border-2 p-4'>Bus</th>
+            <td className='border-2 p-4'>
+              <Link to={'/BusDetails/' + staff.bus}>
+                {staff?.bus}
+              </Link>
+            </td>
           </tr>
         </tbody>
       </table>

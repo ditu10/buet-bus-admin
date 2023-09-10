@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const RouteDetailsComponent = () => {
   const [route,setRoute] = useState({})
   const {id} = useParams();
+  const [bus, setBus] = useState([])
 //   console.log(id);
   const url = 'http://localhost:5000/route/'+id ;
   console.log(url);
@@ -16,6 +17,11 @@ const RouteDetailsComponent = () => {
         setRoute(data);
         
     })
+    // fetch('http://localhost:5000/bus/'+route.bus)
+    // .then(res => res.json())
+    // .then(data =>{
+    //     setBus(data)
+    // })
     console.log(route);
     
   },[])
@@ -33,6 +39,14 @@ const RouteDetailsComponent = () => {
                             <p>Route ID : <span className='text-red-800'>{route.routeId}</span></p>
                             <p>Departure Time from BUET : <span className='text-red-800'>{route.departureTime}</span></p>
                         </div>
+                        <p className='text-center'>Available Bus in this route</p>
+                        <ul className='text-center pb-8'>
+                            {route?.bus?.map((ele)=>{
+                                return(
+                                    <Link to={`/BusDetails/${ele}`}><li >{ele}</li></Link>
+                                )
+                            })}
+                        </ul>
                         <div className="grid grid-cols-1 gap-4">
                             <p className='text-center'>Pickup Points And Times in this Route </p>
                             {route.pickupPoints?.map((ele) => {
