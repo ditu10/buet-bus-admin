@@ -11,45 +11,28 @@ export default function LoginPage() {
     
     const handleSignIn2 = (e) =>{
         e.preventDefault();
-        window.location.href = '/Home';
-    }
-
-    const handleSignIn = (e)=>{
-        e.preventDefault();
-        const url = 'https://userservicebuetbus.azurewebsites.net/api/auth/signins';
-
         const admindata = {
             username : username,
             password : password
         }
-        console.log(JSON.stringify(admindata));
-    
-
-        try{
-            fetch(url, {
-                // mode: 'no-cors',
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(admindata),
-            }).then((res)=>res.json())
-            .then((data)=>{
-                console.log(data);
-                if(data.id){
-                    window.location.href = '/Home';
-                }
-                else{
-                    window.alert('Invalid username or password!! Enter valid username & password');
-                }
-            })
-            
-        }catch(error){
-            console.log("error: " + error)
-        }
-        
-
+        const url = 'http://localhost:5000/auth/signin'
+        fetch(url,{
+            method : "POST",
+            headers : {'Content-Type': 'application/json'},
+            body : JSON.stringify(admindata)
+        }).then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.status === "OK"){
+                window.location.href = '/Home'
+            }
+            else if(data.status === 'Fail'){
+                window.alert(data.msg)
+            }
+        })
     }
+
+    
         
 
         
