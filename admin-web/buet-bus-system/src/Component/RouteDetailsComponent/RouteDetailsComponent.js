@@ -43,7 +43,7 @@ const RouteDetailsComponent = () => {
                         <ul className='text-center pb-8'>
                             {route?.bus?.map((ele)=>{
                                 return(
-                                    <Link to={`/BusDetails/${ele}`}><li >{ele}</li></Link>
+                                    <Link to={`/BusDetails/${ele._id}`}><li >{ele.busName}</li></Link>
                                 )
                             })}
                         </ul>

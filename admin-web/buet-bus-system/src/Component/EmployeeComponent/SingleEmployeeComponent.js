@@ -53,8 +53,8 @@ export const SingleEmployeeComponent = () => {
           <tr>
             <th className='border-2 p-4'>Bus</th>
             <td className='border-2 p-4'>
-              <Link to={'/BusDetails/' + staff.bus}>
-                {staff?.bus}
+              <Link to={'/BusDetails/' + staff?.bus?._id}>
+                {staff?.bus?.busName}
               </Link>
             </td>
           </tr>
