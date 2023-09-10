@@ -126,12 +126,15 @@ const AddBusForm = () => {
                     <label for="driver" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Driver</label>
                     <select ref={driver} id="driver" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     {staffs?.map((ele)=>{
-                        if(ele.role === "Helper"){
-                            return <></>
+                        if(ele.role === "Driver" && ele.status === "Inactive"){
+                            return(
+                                <option value={ele._id}>{ele.name} ({ele.staffId})</option>
+                                );
                         }
-                        return(
-                        <option value={ele._id}>{ele.name} ({ele.staffId})</option>
-                        );
+                        return (
+                            <></>
+                        )
+                        
                     })}
                     <option value="">Not Assigned</option>
                     </select>
@@ -143,12 +146,16 @@ const AddBusForm = () => {
                     <label for="helper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Helper</label>
                     <select ref={helper} id="helper" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     {staffs?.map((ele)=>{
-                        if(ele.role ==='Driver'){
-                            return <></>
+                        if(ele.role ==='Helper' && ele.status ==="Inactive"){
+                            return(
+                                <option value={ele._id}>{ele.name} ({ele.staffId})</option>
+                                );
                         }   
                         return(
-                            <option value={ele._id}>{ele.name} ({ele.staffId})</option>
-                            );
+                            <></>
+                        )
+                        
+                        
                         
                     })}
                     <option value="">Not Assigned</option>

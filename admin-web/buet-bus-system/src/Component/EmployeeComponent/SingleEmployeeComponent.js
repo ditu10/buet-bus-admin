@@ -51,8 +51,12 @@ export const SingleEmployeeComponent = () => {
             <td className='border-2 p-4'>{staff.mobile}</td>
           </tr>
           <tr>
+            <th className='border-2 p-4'>Status</th>
+            <td className='border-2 p-4'>{staff.status}</td>
+          </tr>
+          <tr>
             <th className='border-2 p-4'>Bus</th>
-            <td className='border-2 p-4'>
+            <td className='border-2 p-4 text-red-800'>
               <Link to={'/BusDetails/' + staff?.bus?._id}>
                 {staff?.bus?.busName}
               </Link>

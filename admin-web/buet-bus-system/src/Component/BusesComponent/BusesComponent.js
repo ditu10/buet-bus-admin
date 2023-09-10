@@ -82,7 +82,7 @@ const BusesComponent = () => {
                                                 <img className='mx-auto pb-2' src={icon} alt="" width={50} />
                                                 </Link>
                                                 {/* <p className='text-center '> <span className='text-gray-800'>Bus Name</span> : {ele?.busName}</p> */}
-                                                <p className=''><span className='text-gray-800'>Bus No : </span> {ele?.busNo}</p>
+                                                <p className=''><span className='text-gray-800'>Bus No : </span> {ele?.busName}</p>
                                                 <p className='text-center'><span className='text-gray-800'>Route : </span> {ele?.route?.routeName}</p>
                                                 {/* <div>
                                                 <button onClick={(e) => handleUnavailable(e)} className='border-1 rounded-full bg-gray-700 text-gray-100 px-2 py-1 mx-1'>Unavailable</button>

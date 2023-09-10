@@ -5,7 +5,7 @@ export const AddEmployeeComponent = () => {
   const name = useRef();
   const dob = useRef();
   const role = useRef();
-  const busId = useRef();
+  // const busId = useRef();
   const license = useRef();
   const NID = useRef();
   const mobile = useRef();
@@ -27,14 +27,14 @@ export const AddEmployeeComponent = () => {
       name : name.current.value,
       dob : dob.current.value,
       role : role.current.value,
-      busId : busId.current.value,
+      // busId : busId.current.value,
       license : license.current.value,
       NID : NID.current.value,
       mobile : mobile.current.value
     }
-    if(newStaff.busId == ""){
-      delete newStaff.busId;
-    }
+    // if(newStaff.busId == ""){
+    //   delete newStaff.busId;
+    // }
     staffId.current.value = "";
     name.current.value = "";
     dob.current.value = "";
@@ -101,7 +101,7 @@ export const AddEmployeeComponent = () => {
                     
                     
                 </div>
-                <div class="relative z-0  mb-4 group">
+                {/* <div class="relative z-0  mb-4 group">
                     
                     <label for="busId" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Select Bus</label>
                     <select ref={busId} id="busId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -111,7 +111,7 @@ export const AddEmployeeComponent = () => {
                     <option>B102</option>
                     </select>
 
-                </div>
+                </div> */}
                 
             </div>
 

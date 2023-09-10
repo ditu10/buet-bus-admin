@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 export const EditEmployeeComponent = () => {
   const {id} = useParams();
+  // const[buss, setBuss] = useState({});
   console.log(id);
   const url = 'http://localhost:5000/Staff/'+id ;
   const [prev, setPrev] = useState({});
@@ -10,7 +11,7 @@ export const EditEmployeeComponent = () => {
   const name = useRef();
   const dob = useRef();
   const role = useRef();
-  const busId = useRef();
+  // const bus = useRef();
   const license = useRef();
   const NID = useRef();
   const mobile = useRef();
@@ -28,8 +29,10 @@ export const EditEmployeeComponent = () => {
       license.current.value = data?.license;
       NID.current.value = data?.NID;
       mobile.current.value = data?.mobile;
-      busId.current.value = data?.busId;
+      // bus.current.value = data?.busId;
     })
+    // const busUrl = 
+    // fetch('http://localhost:5000/bus')
   },[])
 
   const handleUpdateStaff = (e) =>{
@@ -47,13 +50,13 @@ export const EditEmployeeComponent = () => {
       name : name.current.value,
       dob : dob.current.value,
       role : role.current.value,
-      busId : busId.current.value,
+      // bus : bus.current.value,
       license : license.current.value,
       NID : NID.current.value,
       mobile : mobile.current.value
     }
-    if(newStaff.busId == ""){
-      delete newStaff.busId;
+    if(newStaff.bus === ""){
+      delete newStaff.bus;
     }
     // staffId.current.value = "";
     // name.current.value = "";
@@ -121,17 +124,23 @@ export const EditEmployeeComponent = () => {
                     
                     
                 </div>
-                <div class="relative z-0  mb-4 group">
+                {/* <div class="relative z-0 w-full mb-6 group">
                     
-                    <label for="busId" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Select Bus</label>
-                    <select ref={busId} id="busId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value=""></option>
-                    <option>B100</option>
-                    <option>B101</option>
-                    <option>B102</option>
+                    <label for="helper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Helper</label>
+                    <select ref={bus} id="helper" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    {staffs?.map((ele)=>{
+                        if(ele.role ==='Driver'){
+                            return <></>
+                        }   
+                        return(
+                            <option value={ele._id}>{ele.name} ({ele.staffId})</option>
+                            );
+                        
+                    })}
+                    <option value="">Not Assigned</option>
                     </select>
-
-                </div>
+                    
+                </div> */}
                 
             </div>
 
